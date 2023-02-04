@@ -39,7 +39,12 @@ let petSalon ={
 function displayFooterInfo(){
     document.getElementById("footer").innerHTML=`${petSalon.name} it opens at ${petSalon.workingHours.open} to ${petSalon.workingHours.close}`;
 }
+function displayPetsName(){
+    for(i=0;i<petSalon.pets.length;i++){
+        console.log(petSalon.pets[i].name);
+    }
+}
 displayFooterInfo();
-
+displayPetsName();
 console.log(petSalon.pets.length); //displaying number of pets
 console.log(petSalon.pets[0].name); //displaying the name of a property inside of an array
