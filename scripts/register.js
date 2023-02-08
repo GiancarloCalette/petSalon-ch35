@@ -1,50 +1,87 @@
-let petSalon ={
-    name:"The Fashion Pet",
-    phone:"555-555-555",
-    workingHours:{
-        open:"9:00",
-        close:"21:00"
-    },
-    address:{
-        street:"Palm ave",
-        zip:"22345",
-        city:"San Diego"
-    },
-    pets:[
-        {
-            name:"Scooby",
-            age:60,
-            gender:"Male",
-            breed:"Dane",
-            service:"Grooming"
-        },
-        {
-            name:"Scrappy",
-            age:20,
-            gender:"Male",
-            breed:"Pitbull",
-            service:"Shower"
-        },
-        {
-            name:"Duke",
-            age:30,
-            gender:"Male",
-            breed:"Husky",
-            service:"Grooming"
-        }
-    ]
-    
+function Pet(n,a,g,b,s,t,o,c){
+    this.name = n;
+    this.age = a;
+    this.gender = g;
+    this.breed = b;
+    this.service = s;
+    this.type = t;
+    this.owner = o;
+    this.contact = c;
 }
-
-function displayFooterInfo(){
-    document.getElementById("footer").innerHTML=`${petSalon.name} it opens at ${petSalon.workingHours.open} to ${petSalon.workingHours.close}`;
+let inputName = document.getElementById("txtName");
+let inputAge = document.getElementById("txtAge");
+let inputGender = document.getElementById("txtGender");
+let inputBreed = document.getElementById("txtBreed");
+let inputService = document.getElementById("txtService");
+let inputType = document.getElementById("txtType");
+let inputOwner = document.getElementById("txtOwner");
+let inputContact = document.getElementById("txtContact");
+function isValid(aPet){
+    let valid = true;
+    if(aPet.name === ""){
+        valid = false;
+        inputName.classList.add("input-alert-error");
+    }
+    if(aPet.age === ""){
+        valid = false;
+        inputAge.classList.add("input-alert-error");
+    }
+    if(aPet.gender === ""){
+        valid = false;
+        inputGender.classList.add("input-alert-error");
+    }
+    if(aPet.breed === ""){
+        valid = false;
+        inputBreed.classList.add("input-alert-error");
+    }
+    if(aPet.service === ""){
+        valid = false;
+        inputService.classList.add("input-alert-error");
+    }
+    if(aPet.type === ""){
+        valid = false;
+        inputType.classList.add("input-alert-error");
+    }
+    if(aPet.owner === ""){
+        valid = false;
+        inputOwner.classList.add("input-alert-error");
+    }
+    if(aPet.contact === ""){
+        valid = false;
+        inputContact.classList.add("input-alert-error");
+    }
+    //make mandatory owner and contact phone
+    return valid;
 }
-function displayPetsName(){
-    for(i=0;i<petSalon.pets.length;i++){
-        console.log(petSalon.pets[i].name);
+function register(){
+    let newPet = new Pet(inputName.value,inputAge.value,inputGender.value,inputBreed.value,inputService.value,inputType.value,inputOwner.value,inputContact.value);
+    if(isValid(newPet) === true){
+        petSalon.pets.push(newPet);
+        updateInfo();
+        displayPetsCards();
+        clearForm();
     }
 }
-displayFooterInfo();
-displayPetsName();
-console.log(petSalon.pets.length); //displaying number of pets
-console.log(petSalon.pets[0].name); //displaying the name of a property inside of an array
+function updateInfo(){
+    document.getElementById("numberOfPets").innerHTML=petSalon.pets.length;
+}
+function clearForm(){
+    inputName.value = "";
+    inputAge.value = "";
+    inputGender.value = "";
+    inputBreed.value = "";
+    inputService.value = "";
+    inputType.value = "";
+    inputOwner.value = "";
+    inputContact.value = "";
+}
+function init(){
+    displayFooterInfo();
+    let scooby = new Pet("Scooby",60,"Male","Dane","Grooming","Dog","Luis",555555);
+    let scrappy = new Pet("Scrappy",50,"Male","Mixed","Vaccines","Dog","Francisco",123456);
+    petSalon.pets.push(scooby,scrappy);
+    updateInfo();
+    displayPetsCards();
+}
+window.onload=init; //wait to render the HTML
+//displayPetsName();
