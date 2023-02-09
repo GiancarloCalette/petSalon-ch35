@@ -58,12 +58,36 @@ function register(){
     if(isValid(newPet) === true){
         petSalon.pets.push(newPet);
         updateInfo();
-        displayPetsCards();
+        //displayPetsCards();
+        displayPetTable();
         clearForm();
     }
 }
 function updateInfo(){
     document.getElementById("numberOfPets").innerHTML=petSalon.pets.length;
+}
+function deletePet(name){
+    if(!confirm("Are you sure you want to remove " + name + "?")){
+        return;
+    }
+    for(let i=0;i<petSalon.pets.length;i++){
+        const pet = petSalon.pets[i];
+        if(pet.name === name){
+            petSalon.pets.splice(i, 1);
+            displayPetTable();
+        }
+    }
+}
+function search(){
+    let text = document.getElementById("txtSearch").value;
+    let arraySearch = [];
+    for(let i=0;i<petSalon.pets.length;i++){
+        const pet = petSalon.pets[i];
+        if(pet.name.toLowerCase().includes(text.toLowerCase())){
+            arraySearch.push(pet);
+        }
+    }
+    console.log(arraySearch);
 }
 function clearForm(){
     inputName.value = "";
@@ -81,7 +105,8 @@ function init(){
     let scrappy = new Pet("Scrappy",50,"Male","Mixed","Vaccines","Dog","Francisco",123456);
     petSalon.pets.push(scooby,scrappy);
     updateInfo();
-    displayPetsCards();
+    //displayPetsCards();
+    displayPetTable();
 }
 window.onload=init; //wait to render the HTML
 //displayPetsName();

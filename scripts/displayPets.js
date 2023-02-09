@@ -18,3 +18,21 @@ function displayPetsCards(){
     }
     DIV.innerHTML=card;
 }
+function displayPetTable(){
+    const tbody = document.getElementById("tbPets-body");
+    let rows = "";
+    for(let i=0;i<petSalon.pets.length;i++){
+        let pet = petSalon.pets[i];
+        rows += `<tr>
+            <td>${pet.name}</td>
+            <td>${pet.age}</td>
+            <td>${pet.gender}</td>
+            <td>${pet.breed}</td>
+            <td>${pet.type}</td>
+            <td>${pet.owner}</td>
+            <td>${pet.contact}</td>
+            <td> <button class ="btn btn-sm btn-outline-danger" onclick="deletePet('${pet.name}')">Remove</button> </td>
+        </tr>`;
+    }
+    tbody.innerHTML = rows;
+}

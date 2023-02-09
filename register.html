@@ -69,8 +69,25 @@
             </div>
             <button class="btn btn-light" onclick="register();">Register</button>
         </div>
-        <div id="pets">
-
+        <div class="pets">
+            <div class="ms-5 mt-5">
+                <input id="txtSearch" type="search" placeholder="Search">
+                <button class="btn btn-sm btn-primary" onclick="search()">Search</button>
+            </div>
+            <table class="table table-bordered table-striped ms-5 mt-2">
+                <thead class="table-dark">
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Breed</th>
+                    <th>Service</th>
+                    <th>Owner</th>
+                    <th>Contact</th>
+                    <th>Options</th>
+                </thead>
+                <tbody id="tbPets-body">
+                </tbody>
+            </table>
         </div>
     </main>
     <footer id="footer">
