@@ -87,6 +87,7 @@ function search(){
             arraySearch.push(pet);
         }
     }
+    displayPetTableCaliz();
     console.log(arraySearch);
 }
 function clearForm(){

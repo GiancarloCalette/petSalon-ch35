@@ -28,6 +28,7 @@ function displayPetTable(){
             <td>${pet.age}</td>
             <td>${pet.gender}</td>
             <td>${pet.breed}</td>
+            <td>${pet.service}</td>
             <td>${pet.type}</td>
             <td>${pet.owner}</td>
             <td>${pet.contact}</td>

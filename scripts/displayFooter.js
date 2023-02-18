@@ -13,7 +13,8 @@ let petSalon ={
     pets:[]
 }
 function displayFooterInfo(){
-    document.getElementById("footer").innerHTML=`${petSalon.name} it opens at ${petSalon.workingHours.open} to ${petSalon.workingHours.close}`;
+    // document.getElementById("footer").innerHTML=`${petSalon.name} it opens at ${petSalon.workingHours.open} to ${petSalon.workingHours.close}`;
+    document.getElementById("footer").innerHTML=`&copy; 2018-2023 Bark Buster Pet Salon.`;
 }
 function displayPetsName(){
     for(i=0;i<petSalon.pets.length;i++){
